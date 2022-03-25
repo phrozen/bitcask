@@ -1,2 +1,9 @@
 *.pdf
 *.exe
+*.out
+
+# /data folder for testing
+data
+
+# examples not yet ready
+example
