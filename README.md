@@ -28,13 +28,14 @@ You can find the original Bitcask Erlang implementation at: https://github.com/b
 
 - [x] Create new database
 - [ ] Open existing database
-- [ ] Verify lock for opening existing database
+- [x] Auto shard active file when it reaches the limit
+- [x] Verify lock for opening existing database
 - [x] List, Put, Get, Delete keys and values
-- [ ] Default sane options and config
+- [x] Default sane options and config
 - [ ] Flushable write buffer and Sync configuration
 - [ ] Search, Scan, Prefix, Indexing (Radix tree?)
 - [ ] Merge and compact database files
-- [ ] Create hint files for fat load times
+- [ ] Create hint files for fast load times
 - [ ] Global time expiration of keys
 - [ ] Extensive unit testing and benchmarks
 - [ ] More...
