@@ -1,6 +1,7 @@
 package bitcask
 
 import (
+	"math/rand"
 	"testing"
 )
 
@@ -29,7 +30,15 @@ func BenchmarkPut(b *testing.B) {
 		b.Run(tt.name, func(b *testing.B) {
 			b.SetBytes(tt.size + 32 + 16)
 			key := make([]byte, 32)
+			_, err = rand.Read(key)
+			if err != nil {
+				b.Fatal(err)
+			}
 			value := make([]byte, tt.size)
+			_, err = rand.Read(value)
+			if err != nil {
+				b.Fatal(err)
+			}
 			b.ResetTimer()
 			for i := 0; i < b.N; i++ {
 				err := bc.Put(key, value)
@@ -38,6 +47,5 @@ func BenchmarkPut(b *testing.B) {
 				}
 			}
 		})
-
 	}
 }
