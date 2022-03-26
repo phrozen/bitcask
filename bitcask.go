@@ -47,11 +47,13 @@ type lookup struct {
 }
 
 // Open reads the files at directory and parses them or creates
-// a new database. Directory has to exist and be writeable by
-// the current process.
+// a new database. If path does not exist it will get created.
 func Open(dirname string, config Configuration) (*Bitcask, error) {
 	if _, err := os.Stat(dirname); os.IsNotExist(err) {
-		return nil, err
+		err = os.MkdirAll(dirname, os.ModeDir)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	data, err := os.ReadFile(path.Join(dirname, LOCKFILE))
