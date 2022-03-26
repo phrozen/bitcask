@@ -32,11 +32,12 @@ You can find the original Bitcask Erlang implementation at: https://github.com/b
 - [x] Verify lock for opening existing database
 - [x] List, Put, Get, Delete keys and values
 - [x] Default sane options and config
+- [x] Fold (map) function to entire key/value set
 - [ ] Flushable write buffer and Sync configuration
-- [ ] Search, Scan, Prefix, Indexing (Radix tree?)
+- [ ] Search, Scan, Prefix, Indexing keys (Radix tree?)
 - [ ] Merge and compact database files
 - [ ] Create hint files for fast load times
-- [ ] Global time expiration of keys
+- [ ] Global time expiration of keys (per key expiration?)
 - [ ] Extensive unit testing and benchmarks
 - [ ] More...
 
@@ -44,13 +45,17 @@ You can find the original Bitcask Erlang implementation at: https://github.com/b
 
 ```go
 
-func bitcask.New(directory string, options bitcask.Opts) (*bitcask.Bitcask, error)
+func Open(dirname string, config bitcask.Configuration) (*Bitcask, error)
+
+func (bc *Bitcask) List() []string
 
 func (bc *Bitcask) Put(key, value []byte) error
 
 func (bc *Bitcask) Get(key []byte) ([]byte, error)
 
 func (bc *Bitcask) Delete(key []byte) error
+
+func (bc *Bitcask) Fold(fn func([]byte, []byte) error) error
 
 ```
 
