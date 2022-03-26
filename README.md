@@ -55,4 +55,31 @@ func (bc *Bitcask) Delete(key []byte) error
 
 ## Benchmarks
 
-Soon...
+So far so good...
+
+```plain
+goos: windows
+goarch: amd64
+pkg: github.com/phrozen/bitcask
+cpu: AMD Ryzen 7 5800X 8-Core Processor
+BenchmarkPut
+BenchmarkPut/128B
+BenchmarkPut/128B-16              579256              2043 ns/op          86.16 MB/s         208 B/op          2 allocs/op
+BenchmarkPut/256B
+BenchmarkPut/256B-16              545518              2124 ns/op         143.15 MB/s         352 B/op          2 allocs/op
+BenchmarkPut/1K
+BenchmarkPut/1K-16                425010              2689 ns/op         398.64 MB/s        1184 B/op          2 allocs/op
+BenchmarkPut/2K
+BenchmarkPut/2K-16                338184              3461 ns/op         605.64 MB/s        2336 B/op          2 allocs/op
+BenchmarkPut/4K
+BenchmarkPut/4K-16                239810              4916 ns/op         842.98 MB/s        4896 B/op          2 allocs/op
+BenchmarkPut/8K
+BenchmarkPut/8K-16                183066              6740 ns/op        1222.61 MB/s        9504 B/op          2 allocs/op
+BenchmarkPut/16K
+BenchmarkPut/16K-16               119998              9773 ns/op        1681.35 MB/s       18464 B/op          2 allocs/op
+BenchmarkPut/32K
+BenchmarkPut/32K-16                66092             16967 ns/op        1934.14 MB/s       40992 B/op          2 allocs/op
+PASS
+ok      github.com/phrozen/bitcask      10.028s
+```
+
